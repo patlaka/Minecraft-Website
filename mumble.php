@@ -1,0 +1,47 @@
+<?
+include "db.php";
+// You may copy this PHP section to the top of file which needs to access after login.
+session_start(); // Use session variable on this page. This function must put on the top of page.
+$_SESSION["prevpage"] = "mumble.php";
+if(!session_is_registered("username")){ // if session variable "sername" does not exist.
+	header("location:login.php"); // Re-direct to index.php
+}
+?>
+
+<?php
+	$title = "Mumble";
+	include("./includes/header.php"); 
+?>
+
+<!-- End Header -->  
+  <div class="content">
+    <h2>Welcome</h2>
+    <ul> 
+    	<li>Download and install Mumble from <a href="http://sourceforge.net/projects/mumble/">here</a></li>
+    	<li>Follow the instructions until you are able to connect to a server.</li>
+    	<li>Click Add New...</li>
+    	<li>
+            <table width="400" border="0">
+          <tr>
+            <td>Server Name:</td>
+            <td>Minecraft</td>
+          </tr>
+          <tr>
+            <td>Address:</td>
+            <td>mc.grosinger.net</td>
+          </tr>
+          <tr>
+            <td>Port:</td>
+            <td>64742</td>
+          </tr>
+          <tr>
+            <td>Username:</td>
+            <td>Your Minecraft username</td>
+          </tr>
+        </table></li>
+    </ul>
+	<p>If you have any questions ask me in-game.</p>
+  </div>
+<!-- Begin Footer -->  
+
+<?php include("./includes/footer.php"); ?>
