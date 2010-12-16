@@ -38,7 +38,6 @@
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=386'>Graceful Reboot</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=512'>Holsters</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=260'>Borderlands</a></li>
-					<li><a href = 'http://forum.hey0.net/showthread.php?tid=2059'>Flashlight</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=1787'>Sign Dispenser</a></li>
 					</ul>";
 					
