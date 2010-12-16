@@ -56,7 +56,7 @@
         <li>Travel away from all inhabited areas before gathering resources.  We like to keep the land looking nice.</li>
         <li>Use of bugs (duping or other exploits) is an instant ban.</li>
         <li>Please do no continuously ask for items. (This is survival, not creative!)</li>
-        <li>No massive exploration without an admin's say so. (If the map file gets too large the server will lag more)</li>
+        <li>No massive exploration without an admin's say so. (If the map file gets too large the server will lag more) - A plugin has been added that adds boundaries.  Feel free to explore up to these.</li>
     </ul>
     <h2>How to Change Player Skin</h2>
     <ol>
