@@ -24,13 +24,24 @@ if (isset($_POST['title']) && isset($_POST['content']))
 if (isset($_POST['title']) && isset($_POST['confirm']))
 {
 	$title = mysql_real_escape_string($_POST['title']);
+	echo $title;
 	$confirm = $_POST['confirm'];
 	if($confirm == 1){
+		echo $title;
 		$query_date = "UPDATE frontpage SET onfront=0 WHERE title='$title'";
 		mysql_query($query_date) or die(mysql_error());
 	}
 }
 
+//Generate html for dropdown menu with name $name and options $options
+function generateSelect($name = '', $options = array()) {
+	$html = '<select name="'.$name.'">';
+	foreach ($options as $value => $option) {
+		$html .= '<option value= " '.$option.'">'.$option.'</option>';
+	}
+	$html .= '</select>';
+	return $html;
+}
 
 ?>
 
@@ -69,14 +80,23 @@ if (isset($_POST['title']) && isset($_POST['confirm']))
 		echo "<h3>Remove from Front Page</h3>";
 		if ($_SESSION["level"] == 5) //Only have the ability to remove article from front if level 5 account
 		{
+		
+			//Generate list of all articles that are on the front page
+			$result = mysql_query("SELECT * FROM frontpage WHERE onfront = '1' ORDER BY created desc") or die(mysql_error());
+			$articles = array();
+			while ($row = mysql_fetch_assoc($result)) {
+				$articles[] = $row['title'];
+			}
+			
+			$html = generateSelect('title', $articles);
 			echo
 				'<p>
 					<form action="admincp.php" method="post">
 							</p>
 								<table>
 									<tr>
-										<td>Title to Remove from Front: </td>
-										<td><input name="title" type="text" /></td>
+										<td>Article to Remove from Front: </td>
+										<td> ' . $html . '</td>
 									</tr>
 								</table>
 								<input type="checkbox" name="confirm" value="1" />Are you sure?
