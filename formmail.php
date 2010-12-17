@@ -43,7 +43,7 @@
     mail($toemail2, $subject, $body, $headers);
     mail($toemail3, $subject, $body, $headers);
     echo "Thanks for submitting your comments";
-	$_SESSION["message"] = "Your message has been sent"
+	$_SESSION["message"] = "Your message has been sent";
 ?>
 </body>
 </html>
