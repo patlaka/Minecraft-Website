@@ -38,6 +38,7 @@ printImage();
 			if(session_is_registered("username")){
 				echo "Welcome " . $_SESSION["username"];
 				echo "<br><a href='logout.php'>Logout</a>";
+				echo "<br><a href='refer.php'>Refer-a-Friend</a>";
 				echo "<br><a href='usercp.php'>Control Panel</a>";
 				if ($_SESSION["level"] >= 4){ //If the user is greater than level 3
 					//Show link to AdminCP
