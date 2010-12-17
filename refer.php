@@ -7,10 +7,11 @@ if(!session_is_registered("username")){ // if session variable "sername" does no
 	header("location:login.php"); // Re-direct to index.php
 }
 
-if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
+if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) && isset($_POST['emailfriend']))
 {
   $name=addslashes($_POST['name']);
   $email=addslashes($_POST['email']);
+  $emailfriend=addslashes($_POST['emailfriend']);
   $comments=addslashes($_POST['message']);
 
  // you can specify which email you want your contact form to be emailed to here
@@ -31,11 +32,18 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
            ." previous page and try again.";
     exit;
   }
+    if (!ereg("^[a-zA-Z0-9_]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$", $emailfriend))
+  {
+    echo "That is not a valid email address.  Please return to the"
+           ." previous page and try again.";
+    exit;
+  }
 
     mail($toemail, $subject, $body, $headers);
 	mail($email, $subject, $body, $headers);
+	mail($emailfriend, $subject, $body, $headers);
     echo "Thanks for submitting your comments";
-	$_SESSION["message"] = "Your invitation has been sent"
+	$_SESSION["message"] = "Your invitation has been sent";
 }
 ?>
 
@@ -60,11 +68,15 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
 				</p>
 					<table>
 						<tr>
-							<td>Name of friend: </td>
+							<td>Friend's Name: </td>
 							<td><input name="name" type="text" /></td>
 						</tr>
 						<tr>
-							<td>Email Address: </td>
+							<td>Friend's Email: </td>
+							<td><input type="text" name="emailfriend" /></td>
+						</tr>
+						<tr>
+							<td>Your Email: </td>
 							<td><input type="text" name="email" /></td>
 						</tr>
 					</table>
@@ -78,7 +90,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']))
 				<input type="submit" value="Submit" />
 			</form>
 	
-	<p>Make sure to tell them to check their spam mail folder, just incase.</p>
+	<p>Make sure to tell them to check their spam mail folder, just incase.  A copy of the email will be sent to you as well.</p>
     
   </div>
 <!-- Begin Footer -->  
