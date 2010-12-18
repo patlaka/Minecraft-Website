@@ -24,6 +24,7 @@ if (isset($_POST['title']) && isset($_POST['content']))
 if (isset($_POST['titleremove']) && isset($_POST['confirm']))
 {
 	$title = mysql_real_escape_string($_POST['titleremove']);
+	$title = trim($title);
 	$confirm = $_POST['confirm'];
 	if($confirm == 1){
 		$query_date = "UPDATE frontpage SET onfront=0 WHERE title='$title'";
@@ -67,7 +68,9 @@ function generateSelect($name = '', $options = array()) {
 							
 								<textarea rows="4" cols="33" name="content"></textarea>
 							</p>
-							<input type="submit" value="Add to Front Page" />
+							<p>
+								<input type="submit" value="Add to Front Page" />
+							</p>
 						</form>
 				</p>';
 		}
