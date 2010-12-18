@@ -54,7 +54,6 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
 	header("location:created.php"); // success page. put the URL you want 
 }
 
-
 function check_referrer($referrer) {
 		$query = "SELECT login,canrefer FROM webusers WHERE login = '$referrer' and canrefer= 1 ";
         $result = mysql_query($query) or die(mysql_error());
@@ -99,10 +98,6 @@ function check_email($email) {
     return true; 
 } 
 
-?>
-
-
-<?php 
 	$title = "Register";
 	include("./includes/header.php");
 	//Insert items here to include in HTML Head section

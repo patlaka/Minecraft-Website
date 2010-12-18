@@ -1,10 +1,9 @@
 <?
 include "db.php";
-// You may copy this PHP section to the top of file which needs to access after login.
-session_start(); // Use session variable on this page. This function must put on the top of page.
+session_start();
 $_SESSION["prevpage"] = "mumble.php";
-if(!session_is_registered("username")){ // if session variable "sername" does not exist.
-	header("location:login.php"); // Re-direct to index.php
+if(!session_is_registered("username")){ // if session variable "username" does not exist.
+	header("location:login.php"); // Re-direct to login.php
 }
 
 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) && isset($_POST['emailfriend']))
@@ -45,9 +44,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) &
     echo "Thanks for submitting your comments";
 	$_SESSION["message"] = "Your invitation has been sent";
 }
-?>
 
-<?php
 	$title = "Refer-a-Friend";
 	include("./includes/header.php");
 	//Insert items here to include in HTML Head section

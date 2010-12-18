@@ -2,16 +2,15 @@
 include "db.php";
 session_start();
 $_SESSION["prevpage"] = "admincp.php";
+
 if(!session_is_registered("username")){ // if session variable "username" does not exist.
 	header("location:login.php"); // Re-direct to login.php
-}
-elseif($_SESSION["level"] < 4){ //Must be level 4 or higher to get in
+}elseif($_SESSION["level"] < 4){ //Must be level 4 or higher to get in
 	header("location:index.php"); // Re-direct to index.php
 }
 
 //Create new article on front page
-if (isset($_POST['title']) && isset($_POST['content']))
-{
+if (isset($_POST['title']) && isset($_POST['content'])){
 	$title = mysql_real_escape_string($_POST['title']); 
 	$content = mysql_real_escape_string($_POST['content']); 
 	
@@ -21,8 +20,7 @@ if (isset($_POST['title']) && isset($_POST['content']))
 }
 
 //Remove article from front page
-if (isset($_POST['titleremove']) && isset($_POST['confirm']))
-{
+if (isset($_POST['titleremove']) && isset($_POST['confirm'])){
 	$title = mysql_real_escape_string($_POST['titleremove']);
 	$title = trim($title);
 	$confirm = $_POST['confirm'];
@@ -33,7 +31,7 @@ if (isset($_POST['titleremove']) && isset($_POST['confirm']))
 }
 
 //Generate html for dropdown menu with name $name and options $options
-function generateSelect($name = '', $options = array()) {
+function generateSelect($name = '', $options = array()){
 	$html = '<select name="'.$name.'">';
 	foreach ($options as $value => $option) {
 		$html .= '<option value= " '.$option.'">'.$option.'</option>';
@@ -42,9 +40,6 @@ function generateSelect($name = '', $options = array()) {
 	return $html;
 }
 
-?>
-
-<?php
 	$title = "Admin Control Panel";
 	include("./includes/header.php");
 	//Insert items here to include in HTML Head section

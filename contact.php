@@ -1,6 +1,6 @@
 <?php 
 	include "db.php";
-	session_start(); // Use session variable on this page. This function must put on the top of page.
+	session_start();
 	$title = "Contact Form";
 	$_SESSION["prevpage"] = "contact.php";
 	include("./includes/header.php");

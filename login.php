@@ -5,9 +5,7 @@
 		$password = sha1($password);    
 		user_login($_POST['username'], $password); 
 	} 
-?>
 
-<?php 
 	$title = "Login";
 	include("./includes/header.php");
 	//Insert items here to include in HTML Head section

@@ -1,14 +1,11 @@
 <?
 include "db.php";
-// You may copy this PHP section to the top of file which needs to access after login.
-session_start(); // Use session variable on this page. This function must put on the top of page.
+session_start();
 $_SESSION["prevpage"] = "commands.php";
-if(!session_is_registered("username")){ // if session variable "sername" does not exist.
-	header("location:login.php"); // Re-direct to index.php
+if(!session_is_registered("username")){ // if session variable "username" does not exist.
+	header("location:login.php"); // Re-direct to login.php
 }
-?>
 
-<?php
 	$title = "Commands";
 	include("./includes/header.php");
 	//Insert items here to include in HTML Head section
