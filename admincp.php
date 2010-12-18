@@ -21,13 +21,11 @@ if (isset($_POST['title']) && isset($_POST['content']))
 }
 
 //Remove article from front page
-if (isset($_POST['title']) && isset($_POST['confirm']))
+if (isset($_POST['titleremove']) && isset($_POST['confirm']))
 {
-	$title = mysql_real_escape_string($_POST['title']);
-	echo $title;
+	$title = mysql_real_escape_string($_POST['titleremove']);
 	$confirm = $_POST['confirm'];
 	if($confirm == 1){
-		echo $title;
 		$query_date = "UPDATE frontpage SET onfront=0 WHERE title='$title'";
 		mysql_query($query_date) or die(mysql_error());
 	}
@@ -88,7 +86,7 @@ function generateSelect($name = '', $options = array()) {
 				$articles[] = $row['title'];
 			}
 			
-			$html = generateSelect('title', $articles);
+			$html = generateSelect('titleremove', $articles);
 			echo
 				'<p>
 					<form action="admincp.php" method="post">
