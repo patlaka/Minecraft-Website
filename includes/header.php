@@ -11,7 +11,11 @@
 	?>
 
 	<link href="main.css" rel="stylesheet" type="text/css" />
+	<!--
 	<script type="text/javascript" language="JavaScript" src="scripts/banner.js"></script>
 	<script type="text/javascript" language="JavaScript" src="scripts/analytics.js"></script>
+	-->
+	
+	<script type="text/javascript" language="JavaScript" src="scripts/main.js"></script>
 
   

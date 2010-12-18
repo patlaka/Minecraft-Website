@@ -1,4 +1,8 @@
 <!--
+//
+// Information for the image rotatation script
+//
+
 // Type the number of images you are rotating.
 NumberOfImagesToRotate = 6;
 // Specify the first and last part of the image tag. 
