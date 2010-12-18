@@ -3,6 +3,8 @@
 	$title = "Home";
 	$_SESSION["prevpage"] = "index.php";
 	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php");
 	include("db.php");	
 ?>
 

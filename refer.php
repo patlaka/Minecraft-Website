@@ -49,7 +49,9 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['message']) &
 
 <?php
 	$title = "Refer-a-Friend";
-	include("./includes/header.php"); 
+	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php");
 ?>
 
 <!-- End Header -->  

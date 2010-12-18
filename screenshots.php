@@ -2,7 +2,9 @@
 	session_start();
 	$title = "Screenshots";
 	$_SESSION["prevpage"] = "screenshots.php";
-	include("./includes/header.php"); 
+	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php");
 ?>
 
 <!-- End Header -->

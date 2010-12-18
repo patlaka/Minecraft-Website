@@ -2,7 +2,9 @@
 	session_start();
 	$title = "Projects";
 	$_SESSION["prevpage"] = "projects.php";
-	include("./includes/header.php"); 
+	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php"); 
 ?>
 
 <!-- End Header --> 

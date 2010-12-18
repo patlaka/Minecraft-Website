@@ -46,7 +46,9 @@ function generateSelect($name = '', $options = array()) {
 
 <?php
 	$title = "Admin Control Panel";
-	include("./includes/header.php"); 
+	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php");
 ?>
 
 <!-- End Header -->  

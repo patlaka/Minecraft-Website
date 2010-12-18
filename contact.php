@@ -3,7 +3,9 @@
 	session_start(); // Use session variable on this page. This function must put on the top of page.
 	$title = "Contact Form";
 	$_SESSION["prevpage"] = "contact.php";
-	include("./includes/header.php"); 
+	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php");
 ?>
 
 <!-- End Header --> 

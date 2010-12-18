@@ -2,7 +2,9 @@
 	session_start();
 	$title = "Account Created";
 	$_SESSION["prevpage"] = "created.php";
-	include("./includes/header.php"); 
+	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php"); 
 	
 ?>
 

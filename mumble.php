@@ -10,7 +10,9 @@ if(!session_is_registered("username")){ // if session variable "sername" does no
 
 <?php
 	$title = "Mumble";
-	include("./includes/header.php"); 
+	include("./includes/header.php");
+	//Insert items here to include in HTML Head section
+	include("./includes/lowerheader.php"); 
 ?>
 
 <!-- End Header -->  
