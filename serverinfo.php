@@ -35,7 +35,7 @@
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=797'>Leaf Dropper</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=837'>Light Weight Chest Protection</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=179'>Backup Plugin</a></li>
-					<li><a href = 'http://www.minecraftwiki.net/wiki/Minecart_Mania!'>Minecart Mania</a></li>
+					<li><a href = 'http://forum.hey0.net/showthread.php?tid=1944'>Minecart Mania</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=2764'>ExactSpawn</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=386'>Graceful Reboot</a></li>
 					<li><a href = 'http://forum.hey0.net/showthread.php?tid=512'>Holsters</a></li>
