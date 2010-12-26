@@ -19,7 +19,9 @@ printImage();
     </ul>
     <p>
 		<div class="loginbox">
+		<p>Server is <?php echo GetServerStatus("mc.grosinger.net","25565")?></p>
 		<?php
+
 			if(session_is_registered("username")){
 				echo "Welcome " . $_SESSION["username"];
 				echo "<br><a href='logout.php'>Logout</a>";
