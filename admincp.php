@@ -32,7 +32,17 @@ if (isset($_POST['titleremove']) && isset($_POST['confirm'])){
 
 //Generate html for dropdown menu with name $name and options $options
 function generateSelect($name = '', $options = array()){
-	$html = '<select name="'.$name.'">';
+	$html = '<select name="'.$name.'"><option value="">Select an option:</option>';
+	foreach ($options as $value => $option) {
+		$html .= '<option value= " '.$option.'">'.$option.'</option>';
+	}
+	$html .= '</select>';
+	return $html;
+}
+
+//Generate html for dropdown menu with name $name and options $options
+function generateSelectNoHead($name = '', $options = array()){
+	$html = '<option value="">Select a person:</option>';
 	foreach ($options as $value => $option) {
 		$html .= '<option value= " '.$option.'">'.$option.'</option>';
 	}
@@ -43,12 +53,18 @@ function generateSelect($name = '', $options = array()){
 	$title = "Admin Control Panel";
 	include("./includes/header.php");
 	//Insert items here to include in HTML Head section
+	echo '<script type="text/javascript" language="JavaScript" src="scripts/admincp.js"></script>';
 	include("./includes/lowerheader.php");
 ?>
 
 <!-- End Header -->  
   <div class="content">
     <?php
+	
+		//
+		//Add article to front page if level 5
+		//
+		
 		echo "<h3>Add to Front Page</h3>";
 		if ($_SESSION["level"] == 5) //Only have the ability to add if level 5 account
 		{
@@ -75,8 +91,13 @@ function generateSelect($name = '', $options = array()){
 		{
 			echo "<p>You are not level 5</p>";
 		}
+		
+		//
+		//Remove article from front page if level 5
+		//
+		
 		echo "<h3>Remove from Front Page</h3>";
-		if ($_SESSION["level"] == 5) //Only have the ability to remove article from front if level 5 account
+		if ($_SESSION["level"] == 5)
 		{
 		
 			//Generate list of all articles that are on the front page
@@ -107,7 +128,36 @@ function generateSelect($name = '', $options = array()){
 		{
 			echo "<p>You are not level 5</p>";
 		}
+	
+	//
+	//Begin section for viewing users	
+	//
+	echo "<h3>Edit Users</h3>";
+	
+	$result = mysql_query("SELECT * FROM webusers") or die(mysql_error());
+	$users = array();
+	while ($row = mysql_fetch_assoc($result)) {
+		$users[] = $row['login'];
+	}
+	$html = generateSelectNoHead('selecteduser', $users);
+		
+	echo
+		'<p>
+			<form action="admincp.php" method="get">
+				<table>
+					<tr>
+						<td>Select User: </td>
+					</tr>
+					<tr>
+						<td> <select name="selectuser" onchange="showUser(this.value)">' . $html . '</td>
+					</tr>
+				</table>
+			</form>
+		</p>';
+	echo '<div id="displayuser"></div>'; //User information will be displayed here
+		
 	?>
+	
 	
   </div>
 <!-- Begin Footer -->  
