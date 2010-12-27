@@ -19,12 +19,13 @@ printImage();
     </ul>
     <p>
 		<div class="loginbox">
-		<p>Server is <?php echo GetServerStatus("mc.grosinger.net","25565")?></p>
+		<p><font size=3>Server is <?php echo GetServerStatus("mc.grosinger.net","25565")?></font></p>
+		<p>
 		<?php
 
 			if(session_is_registered("username")){
-				echo "Welcome " . $_SESSION["username"];
-				echo "<br><a href='logout.php'>Logout</a>";
+				echo "Welcome <br />" . $_SESSION["username"] . "</p><p>";
+				echo "<a href='logout.php'>Logout</a>";
 				echo "<br><a href='refer.php'>Refer-a-Friend</a>";
 				echo "<br><a href='usercp.php'>Control Panel</a>";
 				if ($_SESSION["level"] >= 4){ //If the user is greater than level 3
@@ -44,10 +45,11 @@ printImage();
 						</table>
 						<input type="submit" value="Submit" />
 					</form>';
-				echo "<br><h6><a href='register.php'>Create Account</a></h6>";
+				echo "<br><h5><a href='register.php'>Create Account</a></h5>";
 			}
 		
 		?>
+		</p>
 		</div>
 	</p>
   </div>
