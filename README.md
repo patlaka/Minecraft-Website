@@ -14,5 +14,5 @@ See Issues for a list of tasks yet to be added
  
  
 #Installation
- Create includes/connect.php that will connect to the mysql database that you will be using.
- I will post a mysql dump as soon as I am able to.
+Create includes/connect.php that will connect to the mysql database that you will be using.
+I will post a mysql dump as soon as I am able to.
