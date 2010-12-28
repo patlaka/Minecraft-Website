@@ -1,12 +1,6 @@
 <?php
 session_start();
-$db = mysql_connect("localhost", "redundan_test", "P@SSword");
-if (!$db) {
-	die("Error, could not connect to server!" . mysql_error());
-}
-if (!mysql_select_db("redundan_testing")) {
-	die("Error, could not choose the db! " . mysql_error());
-}
+include("./includes/connect.php");
 function user_logout()
 {
 	session_destroy();
