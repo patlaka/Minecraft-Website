@@ -14,10 +14,10 @@ See Issues for a list of tasks yet to be added
  
  
 #Installation
- *Create includes/connect.php that will connect to the mysql database that you will be using.
- *Use sql dump to create database
- *Change the lowerheader.php and footer.php to have the correct information about your minecraft server.
- *Change the title in header.php
+ * Create includes/connect.php that will connect to the mysql database that you will be using.
+ * Use sql dump to create database
+ * Change the lowerheader.php and footer.php to have the correct information about your minecraft server.
+ * Change the title in header.php
 #Notes
  * I have all the pictures from my site like screenshots and projects in git, you probably don't need those
  * When a new user is created they are automatically level 1, to view the admin control panel they have to be level 4 and to change items in the admin control panel they have to be level 5.
