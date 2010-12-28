@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<?php
-		if(isset($title)){
+		if(isset($title)){ //Use this to easily change the title for each page
 			echo "<title>" . $title . " - Atrium Minecraft</title>";
 		}
 		else{
@@ -11,7 +11,7 @@
 		
 		function GetServerStatus($site, $port)
 			{
-				$status = array("OFFLINE", "ONLINE");
+				$status = array("OFFLINE", "ONLINE"); //Online and Offline messages for the server check
 				$fp = @fsockopen($site, $port, $errno, $errstr, 2);
 				if (!$fp) {
 					return $status[0];
@@ -22,7 +22,7 @@
 	?>
 
 	<link href="main.css" rel="stylesheet" type="text/css" />
-	<!--
+	<!-- //No longer used, but left just in case.  Replaced by the line below the comment.
 	<script type="text/javascript" language="JavaScript" src="scripts/banner.js"></script>
 	<script type="text/javascript" language="JavaScript" src="scripts/analytics.js"></script>
 	-->
