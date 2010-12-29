@@ -96,7 +96,7 @@ function generateSelectNoHead($name = '', $options = array()){
 		//Remove article from front page if level 5
 		//
 		
-		echo "<h3>Remove from Front Page</h3>";
+		echo "<hr /><h3>Remove from Front Page</h3>";
 		if ($_SESSION["level"] == 5)
 		{
 		
@@ -132,30 +132,47 @@ function generateSelectNoHead($name = '', $options = array()){
 	//
 	//Begin section for viewing users	
 	//
-	echo "<h3>Edit Users</h3>";
-	
-	$result = mysql_query("SELECT * FROM webusers") or die(mysql_error());
-	$users = array();
-	while ($row = mysql_fetch_assoc($result)) {
-		$users[] = $row['login'];
+	echo "<hr /><h3>Edit Users</h3>";
+	if ($_SESSION["level"] == 5)
+	{
+		//Generate code for Users list
+		$result = mysql_query("SELECT * FROM webusers") or die(mysql_error());
+		$users = array();
+		while ($row = mysql_fetch_assoc($result)) {
+			$users[] = $row['login'];
+		}
+		$html = generateSelectNoHead('selecteduser', $users);
+		
+		//Generate code for fields list
+		$fields = array("1" => "login", "2" => "password", "3" => "referrer", "4" => "email", "5" => "canrefer", "6" => "level");
+		$fieldscode = generateSelect('selectedfield', $fields);
+			
+		echo
+			'<p>
+				<form action="admincp.php" method="get">
+					<table>
+						<tr>
+							<td>Select User: </td>
+						</tr>
+						<tr>
+							<td> <select name="selectuser" onchange="showUser(this.value)">' . $html . '</td>
+						</tr>
+						<tr>
+							<td>Field: ' . $fieldscode . '</td>
+						</tr>
+						<tr>
+							<td>New Value: <input name="newvalue" type="text" /></td>
+						</tr>
+					</table>
+				</form>
+			</p>';
+		echo '<div id="displayuser"></div>'; //User information will be displayed here
 	}
-	$html = generateSelectNoHead('selecteduser', $users);
-		
-	echo
-		'<p>
-			<form action="admincp.php" method="get">
-				<table>
-					<tr>
-						<td>Select User: </td>
-					</tr>
-					<tr>
-						<td> <select name="selectuser" onchange="showUser(this.value)">' . $html . '</td>
-					</tr>
-				</table>
-			</form>
-		</p>';
-	echo '<div id="displayuser"></div>'; //User information will be displayed here
-		
+	else
+	{
+		echo "<p>You are not level 5</p>";
+	}
+	
 	?>
 	
 	
