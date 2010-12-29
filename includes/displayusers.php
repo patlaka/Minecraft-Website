@@ -2,13 +2,7 @@
 $q=$_GET["q"];
 $q = trim($q);
 
-$con = mysql_connect('localhost', 'redundan_test', 'P@SSword');
-if (!$con)
-  {
-  die('Could not connect: ' . mysql_error());
-  }
-
-mysql_select_db("redundan_testing", $con);
+include ("connect.php");
 
 $sql="SELECT * FROM webusers WHERE login = '".$q."'";
 
