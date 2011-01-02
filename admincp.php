@@ -30,6 +30,28 @@ if (isset($_POST['titleremove']) && isset($_POST['confirm'])){
 	}
 }
 
+//Change user account
+if (isset($_GET['selectuser']) && isset($_GET['setlectedfield']) && isset($_GET['newvalue'])){
+	$user = mysql_escape_string($_GET['selectuser']);
+	$user = trim($user);
+	$field = mysql_escape_string($_GET['selectedfield']);
+	$field = trim($field);
+	$value = mysql_escape_string($_GET['newvalue']);
+	$value = trim($value);
+	
+	if ($field == 'password'){
+		$value = sha1($value);
+	}
+	
+	if ($field == 'login' || $field == 'password' || $field == 'referrer' || $field == 'email'){
+		$query = "UPDATE webusers SET $field='$value' WHERE 'login'='$user'";
+	}
+	else{
+		$query = "UPDATE webusers SET $field=$value WHERE 'login'='$user'";
+	}
+	mysql_query($query) or die(mysql_error());
+}
+
 //Generate html for dropdown menu with name $name and options $options
 function generateSelect($name = '', $options = array()){
 	$html = '<select name="'.$name.'"><option value="">Select an option:</option>';
@@ -96,7 +118,7 @@ function generateSelectNoHead($name = '', $options = array()){
 		//Remove article from front page if level 5
 		//
 		
-		echo "<h3>Remove from Front Page</h3>";
+		echo "<hr /><h3>Remove from Front Page</h3>";
 		if ($_SESSION["level"] == 5)
 		{
 		
@@ -132,30 +154,47 @@ function generateSelectNoHead($name = '', $options = array()){
 	//
 	//Begin section for viewing users	
 	//
-	echo "<h3>Edit Users</h3>";
-	
-	$result = mysql_query("SELECT * FROM webusers") or die(mysql_error());
-	$users = array();
-	while ($row = mysql_fetch_assoc($result)) {
-		$users[] = $row['login'];
+	echo "<hr /><h3>Edit Users</h3>";
+	if ($_SESSION["level"] == 5)
+	{
+		//Generate code for Users list
+		$result = mysql_query("SELECT * FROM webusers") or die(mysql_error());
+		$users = array();
+		while ($row = mysql_fetch_assoc($result)) {
+			$users[] = $row['login'];
+		}
+		$html = generateSelectNoHead('selecteduser', $users);
+		
+		//Generate code for fields list
+		$fields = array("1" => "login", "2" => "password", "3" => "referrer", "4" => "email", "5" => "canrefer", "6" => "level");
+		$fieldscode = generateSelect('selectedfield', $fields);
+		echo
+			'<p>
+				<form action="admincp.php" method="get">
+					<table>
+						<tr>
+							<td>Select User: </td>
+						</tr>
+						<tr>
+							<td> <select name="selectuser" onchange="showUser(this.value)">' . $html . '</td>
+						</tr>
+						<tr>
+							<td>Field: ' . $fieldscode . '</td>
+						</tr>
+						<tr>
+							<td>New Value: <input name="newvalue" type="text" /></td>
+						</tr>
+					</table>
+					<input type="submit" value="Update Account" />
+				</form>
+			</p>';
+		echo '<div id="displayuser"></div>'; //User information will be displayed here
 	}
-	$html = generateSelectNoHead('selecteduser', $users);
-		
-	echo
-		'<p>
-			<form action="admincp.php" method="get">
-				<table>
-					<tr>
-						<td>Select User: </td>
-					</tr>
-					<tr>
-						<td> <select name="selectuser" onchange="showUser(this.value)">' . $html . '</td>
-					</tr>
-				</table>
-			</form>
-		</p>';
-	echo '<div id="displayuser"></div>'; //User information will be displayed here
-		
+	else
+	{
+		echo "<p>You are not level 5</p>";
+	}
+	
 	?>
 	
 	
