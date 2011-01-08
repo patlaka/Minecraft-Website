@@ -41,6 +41,10 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
 		die ("Username taken.");
 	 } 
 	
+	//
+	// If Sucessful
+	//
+	
 	//Create Account
 	mysql_query("INSERT INTO webusers (login, password, email, referrer) VALUES ('$username', '$password', '$email', '$referrer')");
 	
@@ -50,6 +54,15 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['emai
 	if(mysql_num_rows($result)==0){
 		mysql_query("INSERT INTO whitelist (name) VALUES ('$username')");
 	}
+	
+	//Send email to administrators
+	$subject = "New user registered - Atrium Minecraft";
+	$body = "Please welcome new user: " . $username;
+	$headers = "MIME-Version: 1.0\n"
+            ."From: \"".$name."\" <".$email.">\n"
+            ."Content-type: text/html; charset=iso-8859-1\n";
+	$toemail1 = "webmaster@grosinger.net";
+	mail($toemail1, $subject, $body, $headers);
 
 	header("location:created.php"); // success page. put the URL you want 
 }
