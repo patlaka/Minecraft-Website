@@ -66,6 +66,15 @@
         <li>Click on Choose File and upload the skin file that you have saved to your computer</li>
         <li>Click Upload image and then restart your minecraft client.  Thats it!</li>
     </ol>
+	<h2>How to Play after Update Before Server is Updated</h2>
+	<ol>
+		<li>Go <a href="http://digiex.net/minecraft/Digiex_Minecraft/index.php">here</a> and download the version for your computer.</li>
+		<li>Install the program, it will create a desktop shortcut.</li>
+		<li>Launch the program and allow it to download updates, then it will ask you which version of Minecraft to run.  Select the one that was right before the most recent update.</li>
+		<li>Try to log into the server.  It probably will not work, so close the program and launch again following the same steps.</li>
+		<li>That is all there is to it, enjoy the server until the server update is released.  If you can no longer play with the old version it means the server has been updated.</li>
+	</ol>
+		
   </div>
 <!-- Begin Footer -->  
 
